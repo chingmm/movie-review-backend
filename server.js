@@ -18,6 +18,7 @@ app.use(morgan("tiny"))
 //Routers
 app.get("/", auth, (req, res) => {
     res.json(req.payload)
+    // res.json({ hello: "Hello World!" });
 });
 
 app.use("/auth", AuthRouter)
