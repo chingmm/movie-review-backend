@@ -1,4 +1,4 @@
-const Note = require("../models/notes")
+const Movie = require("../models/movies")
 const auth = require("../auth")
 const {Router} = require("express")
 const router = Router();
@@ -7,7 +7,7 @@ const router = Router();
 router.get("/", auth, async (req, res)=> {
     try {
         const {username} = req.payload
-        res.status(200).json(await Note.find({username}))
+        res.status(200).json(await Movie.find({username}))
     }
     catch (error){
         res.status(400).json({error})
@@ -20,7 +20,7 @@ router.post("/", auth, async (req, res)=> {
     try {
         const {username} = req.payload
         req.body.username = username
-        res.status(200).json(await Note.create(req.body))
+        res.status(200).json(await Movie.create(req.body))
     }
     catch (error){
         res.status(400).json({error})
@@ -33,7 +33,7 @@ router.put("/:id", auth, async (req, res)=> {
         const {username} = req.payload
         req.body.username = username
         const {id} = req.params
-        res.status(200).json(await Note.findByIdAndUpdate(id, req.body, {new: true}))
+        res.status(200).json(await Movie.findByIdAndUpdate(id, req.body, {new: true}))
     }
     catch (error){
         res.status(400).json({error})
@@ -44,7 +44,7 @@ router.put("/:id", auth, async (req, res)=> {
 router.delete("/:id", auth, async (req, res)=> {
     try {
         const {id} = req.params
-        res.status(200).json(await Note.findByIdAndRemove(id))
+        res.status(200).json(await Movie.findByIdAndRemove(id))
 
     }
     catch (error){

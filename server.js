@@ -6,7 +6,7 @@ const cors = require ("cors");
 const morgan = require ("morgan");
 const mongoose = require ("./db/db");
 const AuthRouter = require("./controllers/user")
-const NoteRouter = require("./controllers/notes")
+const MovieRouter = require("./controllers/movies")
 const auth = require("./auth")
 
 //Middleware
@@ -22,7 +22,7 @@ app.get("/", auth, (req, res) => {
 
 app.use("/auth", AuthRouter)
 
-app.use("/note", NoteRouter);
+app.use("/movie", MovieRouter);
 
 //Listeners
 
